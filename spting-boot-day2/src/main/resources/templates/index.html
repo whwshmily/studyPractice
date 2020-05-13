@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table align="center" border="1" style="width: 60%;height: 60%;">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>名字</th>
+            <th>角色</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="guest:${list}">
+            <td th:text="${guestStat.count}">index</td>
+            <td th:text="${guestStat.current}">index</td>
+            <td th:text="${guest.name}">name</td>
+            <td th:text="${guest.sore}">sore</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

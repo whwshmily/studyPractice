@@ -1,0 +1,22 @@
+package com.action;
+
+public class LoginAction {
+    private String username;
+    private String password;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String execute() {
+        System.out.println(username + "---" + password);
+        if ("admin".equals(username) && "admin".equals(password)) {
+            return "success";
+        }
+        return "error";
+    }
+}
