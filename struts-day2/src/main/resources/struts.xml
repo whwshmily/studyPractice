@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.action.extension" value="action,,do"></constant>
+    <package name="whw" extends="struts-default" namespace="/">
+        <action name="login" class="com.whw.action.LoginAction" >
+            <result name="success" type="dispatcher">
+                index.jsp
+            </result>
+        </action>
+        <action name="login1" class="com.whw.action.Test2" ></action>
+        <action name="login2" class="com.whw.action.Test3" ></action>
+        <action name="login3" class="com.whw.action.Test4" ></action>
+    </package>
+</struts>

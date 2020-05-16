@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.action.extension" value="action,,do"></constant>
+    <package name="ddd"  extends="json-default" namespace="/">
+        <result-types>
+            <result-type name="my" class="com.whw.action.Test">
+                <param name="name">success</param>
+            </result-type>
+        </result-types>
+        <interceptors>
+            <interceptor name="ss" class="com.whw.interceptor.MyInterceptor">
+                <param name="excludeMethods">t2</param>
+            </interceptor>
+            <interceptor-stack name="sss">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="ss">
+                    <param name="name">like</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="sss"></default-interceptor-ref>
+
+        <action name="login"  class="com.whw.action.TestAction" method="t1">
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+            <interceptor-ref name="ss"></interceptor-ref>
+            <!--<result name="sos" type="my"></result>-->
+            <result name="sos" type="dispatcher">index.jsp</result>
+        </action>
+        <action name="test" class="com.whw.action.Test2" >
+            <result name="json" type="json">
+
+            </result>
+        </action>
+        <action name="login1"  class="com.whw.action.TestAction" method="t2">
+            <interceptor-ref name="sss"></interceptor-ref>
+        </action>
+        <action name="login2"  class="com.whw.action.TestAction" method="t3"></action>
+        <action name="upload" class="com.whw.action.TestFile" method="upload"></action>
+        <action name="down" class="com.whw.action.TestFile" method="down">
+            <result name="success" type="stream">
+                <param name="contentDisposition">attachment;fileName=test.txt</param>
+            </result>
+        </action>
+    </package>
+</struts>
